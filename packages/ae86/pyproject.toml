@@ -1,0 +1,8 @@
+[project]
+name = "ae86"
+version = "1.0.0"
+description = "统一框架库AE86, 别说话, 上车"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

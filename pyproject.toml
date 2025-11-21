@@ -1,0 +1,25 @@
+[project]
+name = "eagle-eye"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "jinja2>=3.1.6",
+    "nicegui>=3.3.1",
+    "pyyaml>=6.0.3",
+    "ae86",
+    "sentry-sdk>=2.45.0",
+]
+
+[dependency-groups]
+dev = [
+    "dotenv>=0.9.9",
+    "ipython",
+]
+
+[tool.uv.sources]
+ae86 = { workspace = true }
+
+[tool.uv.workspace]
+members = ["packages/*"]
