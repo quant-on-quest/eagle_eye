@@ -59,3 +59,29 @@ with open(strategy_performance_path, "w", encoding="utf-8") as f:
 打开 `runtime/config.yml.j2` 修改路径成你要的rocket路径
 
 然后 `uv run main.py`
+
+## 怎么设置开机启动
+
+```
+[Unit]
+Description=Eagle Eye - Initial D Dashboard
+After=network.target
+
+[Service]
+Type=simple
+User=<username>
+WorkingDirectory=/home/<username>/code/qoq/eagle_eye
+ExecStart=/home/<username>/.local/bin/uv run python main.py
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
+```
+
+vim /etc/systemd/system/eagle_eye.service
+
+1. sudo systemctl enable eagle_eye.service
+2. sudo systemctl start eagle_eye.service
