@@ -10,6 +10,7 @@ dependencies = [
     "pyyaml>=6.0.3",
     "ae86",
     "sentry-sdk>=2.45.0",
+    "pandas>=2.3.3",
 ]
 
 [dependency-groups]
