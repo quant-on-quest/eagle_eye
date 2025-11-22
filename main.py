@@ -11,11 +11,18 @@ from view.hold_view import hold_view
 
 def root():
     strategy_performance_history_path = Path(boot.app.config["rocket_pro_path"]) / "data" / "策略表现_历史.json"
+    performance_history_path = Path(boot.app.config["rocket_pro_path"]) / "data" / "个股表现_历史.json"
+    current_hold_path = Path(boot.app.config["rocket_pro_path"]) / "data" / "账户信息" / "当前持仓.csv"
+
     data = get_strategy_performance_history_data(strategy_performance_history_path)
 
-    current_hold_path = Path(boot.app.config["rocket_pro_path"]) / "data" / "账户信息" / "当前持仓.csv"
-    hold_data = get_current_hold_data(current_hold_path)
+    hold_data = get_current_hold_data(current_hold_path, performance_history_path)
 
+
+
+    # 页面标题
+    ui.label('Initial D').classes('text-h3 text-center w-full q-mt-md q-mb-xs')
+    ui.label('弯道快才是真的快，直线谁不会加速啊？').classes('text-subtitle1 text-center w-full q-mb-md text-grey-7')
 
     with html.div().classes('flex flex-row w-full'):
         with html.div().classes('basis-1/2 p-1'):
@@ -28,5 +35,5 @@ def root():
     with html.div().classes('flex flex-row w-full'):
         hold_view(hold_data).classes('w-full')
 
-
-ui.run(root, title="策略表现")
+logo = Path(__file__).parent / "static" / "logo.png"
+ui.run(root, title="得咿的飘", favicon=logo)
